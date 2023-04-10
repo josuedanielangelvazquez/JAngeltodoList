@@ -113,10 +113,37 @@ class TareasViewModel{
         return result
     }
     
+   func gettaskbyid(idtask : Int)-> Result{
+       var result = Result()
+       let context = DB.init()
+       let query = "Select IdBalance, Name, HoraInicio, HoraTermino, IdCategoria, Fecha FROM Tarea WHERE (IdBalance = \(idtask))"
+       var statement : OpaquePointer? = nil
+       do{
+           if try sqlite3_prepare_v2(context.db, query, -1, &statement, nil) == SQLITE_OK{
+               while sqlite3_step(statement) == SQLITE_ROW{
+                   var task = Tasck(idtask: 0, Name: "", HoraInicio: "", HoraTermino: "", IdCategori: 0, Fecha: "")
+                   task.idtask = Int(sqlite3_column_int(statement, 0))
+                   task.Name = String(cString:  sqlite3_column_text(statement, 1))
+                   task.HoraInicio = String(cString: sqlite3_column_text(statement, 2))
+                   task.HoraTermino = String(cString: sqlite3_column_text(statement, 3))
+                   task.IdCategori = Int(sqlite3_column_int(statement, 4))
+                   task.Fecha = String(cString: sqlite3_column_text(statement, 5))
+                   result.Object = task
+               }
+               result.Correct = true
+           }
+       }
+       catch let error{
+           result.Correct = false
+           result.ErrorMessage = error.localizedDescription
+           result.Ex = error
+       }
+       return result
+    }
     func gettaskbyday(fecha : String) -> Result{
         var result = Result()
         let context = DB.init()
-        let query = "Select IdBalance, Name, HoraInicio, HoraTermino, IdCategoria, Fecha FROM Tarea WHERE (fecha = \(fecha))"
+        let query = "Select IdBalance, Name, HoraInicio, HoraTermino, IdCategoria, Fecha FROM Tarea WHERE (fecha = '\(fecha)')"
         var statement : OpaquePointer? = nil
         do{
             if try sqlite3_prepare_v2(context.db, query, -1, &statement, nil) == SQLITE_OK{

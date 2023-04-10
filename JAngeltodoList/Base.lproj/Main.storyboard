@@ -203,11 +203,15 @@
                                     <action selector="addtaskaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fd1-ts-R7i"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" systemColor="linkColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="CollectionDays" destination="zhG-hC-1PA" id="gFd-nf-oid"/>
                         <outlet property="Datetodaylbl" destination="GFJ-E9-Kvv" id="ruc-Xr-xq5"/>
+                        <outlet property="Timetasklbl" destination="VGv-8t-zUr" id="NCn-o1-lQt"/>
+                        <outlet property="addtaskbutton" destination="wXJ-eY-bQP" id="97e-7G-l3c"/>
+                        <outlet property="nametasklbl" destination="sdD-vT-0A7" id="eqN-K0-AlE"/>
                         <outlet property="tareastableview" destination="iQM-gX-gnP" id="g4C-f7-3mv"/>
                         <segue destination="1s8-bc-KC0" kind="show" identifier="seguesaddtask" id="b5y-Ss-eiJ"/>
                     </connections>

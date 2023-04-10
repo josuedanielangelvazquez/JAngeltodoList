@@ -69,22 +69,45 @@ class seguesViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true)
     }
+    func alertfalseequalsdatye(){
+        let alert = UIAlertController(title: nil, message: "The start time cannot be equal to the end time", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
     func getdate()->String{
      let dateformatte = DateFormatter()
         dateformatte.dateFormat = "dd/MM/yyyy"
         let stringformat: String = dateformatte.string(from: self.DateDay.date) as String
         return stringformat
     }
+    func alertfalsetime(){
+        let alert = UIAlertController(title: nil, message: "start time cannot be greater than end time", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    func valtime()->Bool{
+        var timestartisgreater = true
+        if Timestart.date == Timeend.date{
+            alertfalseequalsdatye()
+        }
+        else if Timestart.date > Timeend.date{
+            timestartisgreater = false
+        }
+        else{
+            timestartisgreater = true
+        }
+        return timestartisgreater
+    }
     func getstarttime()->String{
-        let dateformatte = DateFormatter()
-        dateformatte.dateFormat = "HH:mm"
-        let stringformat : String = dateformatte.string(from: self.Timestart.date) as String
+        let dateformattestart = DateFormatter()
+        dateformattestart.dateFormat = "HH:mm"
+        let stringformat : String = dateformattestart.string(from: self.Timestart.date) as String
         return stringformat
     }
     func getendtime()->String{
-        let dataformatted = DateFormatter()
-        dataformatted.dateFormat = "HH:mm"
-        let stringformat : String = dataformatted.string(from: self.Timeend.date) as String
+        let dataformattedend = DateFormatter()
+        dataformattedend.dateFormat = "HH:mm"
+        let stringformat : String = dataformattedend.string(from: self.Timeend.date) as String
         return stringformat
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -107,16 +130,22 @@ class seguesViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             Addtasktext.backgroundColor = .red
             return
         }
-        let task = Tasck(idtask: 0, Name: name, HoraInicio: getstarttime(), HoraTermino: getendtime(), IdCategori: idcategory, Fecha: getdate())
-        let result = tareasviewmodel.addtask(task: task)
-        if result.Correct ==  true{
-            alerttrue()
+        if valtime() == true{
+            
+            let task = Tasck(idtask: 0, Name: name, HoraInicio: getstarttime(), HoraTermino: getendtime(), IdCategori: idcategory, Fecha: getdate())
+            let result = tareasviewmodel.addtask(task: task)
+            if result.Correct ==  true{
+                alerttrue()
+            }
+            else{
+                alertfalse()
+            }
+            
+            
         }
         else{
-            alertfalse()
+            alertfalsetime()
         }
-        
-       
     }
 
     @IBAction func AddTask(_ sender: Any) {

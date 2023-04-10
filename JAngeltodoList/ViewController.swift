@@ -8,12 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate{
-   
+    @IBOutlet weak var addtaskbutton: UIButton!
     @IBOutlet weak var Datetodaylbl: UILabel!
-    
     @IBOutlet weak var tareastableview: UITableView!
     
+    
+    @IBOutlet weak var nametasklbl: UILabel!
+    
+    @IBOutlet weak var Timetasklbl: UILabel!
+    
+    
+    var idtask = 0
     var daynumber = ""
+    var mounthnumber = ""
+    var taskdaynumber = ""
     var dataSource = ["Enero", "Febrero"]
     var tasks = [Tasck]()
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -21,12 +29,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
    
     var tareasvfiewmodel = TareasViewModel()
+  
     
     @IBOutlet weak var CollectionDays: UICollectionView!
     var day = [days]()
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        getdatetoday()
+
+        addtaskbutton.tintColor = UIColor(named: "AccentColor")
         CollectionDays.delegate = self
         CollectionDays.dataSource = self
         view.addSubview(CollectionDays)
@@ -38,11 +50,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     override func viewWillAppear(_ animated: Bool) {
         loadData()
-        getdatetoday()
-        loaddatatable()
+        loaddatatable(datedaynumber: daynumber, mounthdate: mounthnumber)
+
     }
-    func loaddatatable(){
-        let result = tareasvfiewmodel.gettaskbyday(fecha: "05/04/2023")
+    func loaddatabyid(){
+        let result = tareasvfiewmodel.gettaskbyid(idtask: idtask)
+        if result.Correct == true{
+            var task = Tasck(idtask: 0, Name: "", HoraInicio: "", HoraTermino: "", IdCategori: 0, Fecha: "")
+            task = result.Object as! Tasck
+            nametasklbl.text = task.Name
+            Timetasklbl.text = "\(task.HoraInicio) - \(task.HoraTermino)"
+        }
+        else{
+            alertfalse()
+        }
+    }
+    func loaddatatable(datedaynumber : String, mounthdate : String){
+        let result = tareasvfiewmodel.gettaskbyday(fecha: "\(datedaynumber)/\(mounthdate)/2023")
         if result.Correct == true{
             tasks = result.Objects! as! [Tasck]
             tareastableview.reloadData()
@@ -62,9 +86,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func getdatetoday(){
         let date = Date()
         let dateformatter = DateFormatter()
+        let dateformattersearchday = DateFormatter()
+        let dateformattersearchmounth = DateFormatter()
         dateformatter.dateFormat = "dd/MMMM/yyyy"
+        dateformattersearchday.dateFormat = "dd"
+        dateformattersearchmounth.dateFormat = "MM"
+        
         let dateString = dateformatter.string(from: date)
+        daynumber = dateformattersearchday.string(from: date)
+        mounthnumber = dateformattersearchmounth.string(from: date)
         Datetodaylbl.text = dateString
+        
     }
 
     
@@ -107,6 +139,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             }
         }
+        viewWillAppear(true)
+        
             }
         
     
@@ -163,8 +197,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cel = tableView.dequeueReusableCell(withIdentifier: "taskcell", for: indexPath as IndexPath) as! TaskTableViewCell
      
         cel.tasktable.text = tasks[indexPath.row].Name
-        cel.Timelbl.text = tasks[indexPath.row].Fecha
+        cel.Timelbl.text = "\(tasks[indexPath.row].HoraInicio) - \(tasks[indexPath.row].HoraTermino)"
         return cel
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        idtask = tasks[indexPath.row].idtask
+        loaddatabyid()
     }
     
     
