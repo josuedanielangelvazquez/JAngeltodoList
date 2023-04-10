@@ -10,4 +10,7 @@ struct days {
     let daynumber : String
    let  dayname : String
 }
+struct prueba{
+    var prueba : String
+}
 
