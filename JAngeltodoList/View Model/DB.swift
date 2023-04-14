@@ -31,7 +31,7 @@ class DB{
           
             let createtableCategoriasQuery = "CREATE TABLE IF NOT EXISTS Categorias (IdCategoria INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NameCategoria TEXT UNIQUE)"
           
-            let createtabletareas = "CREATE TABLE IF NOT EXISTS Tarea(IdBalance INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Name TEXT, HoraInicio TEXT, HoraTermino TEXT, IdCategoria INTEGER, Fecha TEXT, FOREIGN KEY (IdCategoria) REFERENCES Categorias(IdCategoria))"
+            let createtabletareas = "CREATE TABLE IF NOT EXISTS Tarea(IdBalance INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Completado INTEGER, Name TEXT, HoraInicio TEXT, HoraTermino TEXT, IdCategoria INTEGER, Fecha TEXT, FOREIGN KEY (IdCategoria) REFERENCES Categorias(IdCategoria))"
                         
             
             if sqlite3_exec(db, createtableCategoriasQuery, nil, nil, nil) != SQLITE_OK{

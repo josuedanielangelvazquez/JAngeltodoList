@@ -86,7 +86,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Acm-ah-xCw">
-                                <rect key="frame" x="16" y="225.33333333333337" width="361" height="175.33333333333331"/>
+                                <rect key="frame" x="16" y="225.33333333333334" width="361" height="175.33333333333329"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXk-PQ-L7F">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
@@ -214,11 +214,73 @@
                         <outlet property="nametasklbl" destination="sdD-vT-0A7" id="eqN-K0-AlE"/>
                         <outlet property="tareastableview" destination="iQM-gX-gnP" id="g4C-f7-3mv"/>
                         <segue destination="1s8-bc-KC0" kind="show" identifier="seguesaddtask" id="b5y-Ss-eiJ"/>
+                        <segue destination="1s8-bc-KC0" kind="show" identifier="seguestaskdetail" id="J30-vF-j1U"/>
+                        <segue destination="PYi-eA-tbY" kind="show" id="0tE-Oq-1VV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
+        </scene>
+        <!--Detailtask View Controller-->
+        <scene sceneID="F2E-eg-PD3">
+            <objects>
+                <viewController id="PYi-eA-tbY" customClass="DetailtaskViewController" customModule="JAngeltodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Es2-bp-vRk">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yo-g7-rDa">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="198"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-1o-txy">
+                                        <rect key="frame" x="8" y="104" width="377" height="41"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nzv-1o-txy" secondAttribute="trailing" constant="8" id="Cny-lf-erp"/>
+                                    <constraint firstAttribute="height" constant="198" id="Kx4-tL-tyw"/>
+                                    <constraint firstAttribute="trailing" secondItem="nzv-1o-txy" secondAttribute="trailing" constant="8" id="SAL-y0-Tqc"/>
+                                    <constraint firstItem="nzv-1o-txy" firstAttribute="top" secondItem="2Yo-g7-rDa" secondAttribute="top" constant="104" id="hz0-xP-qmc"/>
+                                    <constraint firstItem="nzv-1o-txy" firstAttribute="leading" secondItem="2Yo-g7-rDa" secondAttribute="leading" constant="8" id="iHo-TS-qFS"/>
+                                    <constraint firstAttribute="width" constant="393" id="rTx-3A-mVh"/>
+                                    <constraint firstItem="nzv-1o-txy" firstAttribute="leading" secondItem="2Yo-g7-rDa" secondAttribute="leading" constant="8" id="ylt-e4-5Ow"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mNR-wQ-i2Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2Yo-g7-rDa" firstAttribute="trailing" secondItem="mNR-wQ-i2Y" secondAttribute="trailing" id="4Lq-1E-iLj"/>
+                            <constraint firstItem="2Yo-g7-rDa" firstAttribute="top" secondItem="Es2-bp-vRk" secondAttribute="top" id="G8h-b8-hax"/>
+                            <constraint firstItem="2Yo-g7-rDa" firstAttribute="leading" secondItem="mNR-wQ-i2Y" secondAttribute="leading" id="qdG-mc-F7N"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" style="browser" id="hJn-I8-eKB">
+                        <barButtonItem key="backBarButtonItem" title="I" id="Dpf-Rh-U9O"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="429-FK-o7K">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="178-6W-j1N">
+                                <rect key="frame" x="327.33333333333331" y="5" width="49.666666666666686" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pencil.circle.fill" catalog="system">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="Vietask" destination="2Yo-g7-rDa" id="yCP-sm-xYm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mub-P1-cas" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826.7175572519084" y="-678.16901408450713"/>
         </scene>
         <!--Segues View Controller-->
         <scene sceneID="BbT-nn-7LY">
@@ -456,9 +518,13 @@
             <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J30-vF-j1U"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="record.circle" catalog="system" width="128" height="123"/>
         <systemColor name="linkColor">

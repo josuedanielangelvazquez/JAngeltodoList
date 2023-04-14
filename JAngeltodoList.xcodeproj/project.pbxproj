@@ -22,6 +22,7 @@
 		FB60196A29DE178800F5258B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60196929DE178800F5258B /* Task.swift */; };
 		FB60197129DE330000F5258B /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60196F29DE330000F5258B /* TaskTableViewCell.swift */; };
 		FB60197229DE330000F5258B /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB60197029DE330000F5258B /* TaskTableViewCell.xib */; };
+		FBA814B829E89CA400C7FC44 /* DetailtaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA814B729E89CA400C7FC44 /* DetailtaskViewController.swift */; };
 		FBA8543029DCA51C006DE6B2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA8542F29DCA51C006DE6B2 /* Categories.swift */; };
 		FBA8543229DCA75D006DE6B2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA8543129DCA75D006DE6B2 /* Result.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		FB60196929DE178800F5258B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		FB60196F29DE330000F5258B /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		FB60197029DE330000F5258B /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		FBA814B729E89CA400C7FC44 /* DetailtaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailtaskViewController.swift; sourceTree = "<group>"; };
 		FBA8542F29DCA51C006DE6B2 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		FBA8543129DCA75D006DE6B2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 			children = (
 				FB5F82D329DBA70B00B50CD7 /* seguesViewController.swift */,
 				FB60196F29DE330000F5258B /* TaskTableViewCell.swift */,
+				FBA814B729E89CA400C7FC44 /* DetailtaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				FB4BA3C129DB3DEE00C2296E /* SceneDelegate.swift in Sources */,
 				FBA8543029DCA51C006DE6B2 /* Categories.swift in Sources */,
 				FBA8543229DCA75D006DE6B2 /* Result.swift in Sources */,
+				FBA814B829E89CA400C7FC44 /* DetailtaskViewController.swift in Sources */,
 				FB60197129DE330000F5258B /* TaskTableViewCell.swift in Sources */,
 				FB5F82D029DB5BF500B50CD7 /* DB.swift in Sources */,
 				FB5F82D629DBA9C700B50CD7 /* days.swift in Sources */,

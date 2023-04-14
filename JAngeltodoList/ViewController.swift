@@ -34,8 +34,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var CollectionDays: UICollectionView!
     var day = [days]()
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        nametasklbl.isUserInteractionEnabled = true
+    
+        let tapnamelbl = UITapGestureRecognizer(target: self, action: #selector(seguestaskdetail))
+        nametasklbl.isUserInteractionEnabled = true
+        nametasklbl.addGestureRecognizer(tapnamelbl)
+        
         getdatetoday()
 
         addtaskbutton.tintColor = UIColor(named: "AccentColor")
@@ -47,6 +52,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tareastableview.delegate = self
         tareastableview.dataSource = self
         view.addSubview(tareastableview)
+        
+    }
+    
+    @objc func seguestaskdetail(){
+        performSegue(withIdentifier: "seguestaskdetail", sender: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         loadData()
@@ -195,7 +205,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cel = tableView.dequeueReusableCell(withIdentifier: "taskcell", for: indexPath as IndexPath) as! TaskTableViewCell
-     
+        cel.selectionStyle = UITableViewCell.SelectionStyle.none
         cel.tasktable.text = tasks[indexPath.row].Name
         cel.Timelbl.text = "\(tasks[indexPath.row].HoraInicio) - \(tasks[indexPath.row].HoraTermino)"
         return cel
